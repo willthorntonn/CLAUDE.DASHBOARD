@@ -3681,7 +3681,7 @@ img, video, canvas, svg { max-width: 100%; }
 
   function openPanel(){
     panel.classList.add('open');
-    if (!greeted){ greeted = true; addMsg('coach', md("Hey — I'm Nova, your coach. I can see your weight log, workouts and progress photos. Tap **Overview** or ask me anything.")); }
+    if (!greeted){ greeted = true; ask('Give me a quick overview of how everything is going — my bodyweight trend, training consistency, strength progress, and what to focus on next.'); }
     setTimeout(()=>input.focus(), 50);
   }
   function closePanel(){ panel.classList.remove('open'); }

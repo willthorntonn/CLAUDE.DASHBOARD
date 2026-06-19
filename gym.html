@@ -3533,25 +3533,27 @@ img, video, canvas, svg { max-width: 100%; }
     position: absolute; top: 16px; right: 16px; z-index: 30;
     width: 46px; height: 46px; border-radius: 50%; border: 0; cursor: pointer; padding: 0;
     overflow: hidden; -webkit-tap-highlight-color: transparent; transition: transform 0.12s;
-    background: radial-gradient(circle at 50% 58%, #8A6CFF, #4C2EC9 80%);
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.14), 0 6px 22px rgba(124,92,255,0.55),
-                inset 0 -6px 14px rgba(38,10,86,0.65);
+    background: radial-gradient(circle at 38% 30%, #d4b8ff 0%, #9b6aff 38%, #6f38d9 68%, #4c1fa8 100%);
+    box-shadow: 0 0 0 1px rgba(167,139,250,0.18), 0 0 22px rgba(124,92,255,0.7), inset 0 -6px 16px rgba(30,8,80,0.55);
   }
   #nvFab:active { transform: scale(0.93); }
-  /* swirling conic plasma */
+  /* Gloss highlight */
   #nvFab::before {
-    content: ''; position: absolute; inset: -28%; border-radius: 50%;
-    background: conic-gradient(from 0deg, #6D4AE0, #C9B8FF, #7C5CFF, #B98AFF, #8A6CFF, #6D4AE0);
-    filter: blur(2px); opacity: 0.92; animation: nvspin 7s linear infinite;
+    content: ''; position: absolute; inset: 0; border-radius: 50%;
+    background: radial-gradient(circle at 38% 26%, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.10) 42%, rgba(255,255,255,0) 62%);
   }
-  /* glassy gloss highlight + bottom shade */
+  /* Depth shade */
   #nvFab::after {
     content: ''; position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
-    background: radial-gradient(circle at 34% 26%, rgba(255,255,255,0.92), rgba(255,255,255,0) 40%),
-                radial-gradient(circle at 72% 82%, rgba(18,7,40,0.5), transparent 55%);
+    background: radial-gradient(circle at 62% 78%, rgba(30,8,80,0.52), transparent 60%);
   }
-  @keyframes nvspin { to { transform: rotate(360deg); } }
-  #nvFab .nv-online { position: absolute; right: 1px; bottom: 1px; z-index: 2; width: 11px; height: 11px; border-radius: 50%; background: #6ee7b7; border: 2px solid #0a0a0b; box-shadow: 0 0 6px rgba(110,231,183,0.7); }
+  /* Eyes */
+  .nv-eye { position: absolute; width: 14%; height: 14%; border-radius: 50%; top: 40%;
+    background: #0c1a0d; z-index: 2; animation: nvEyeLook 6s ease-in-out infinite; }
+  .nv-eye-l { left: 26%; }
+  .nv-eye-r { right: 26%; animation-delay: 0.15s; }
+  @keyframes nvEyeLook { 0%,100%{transform:translate(0,0)} 15%{transform:translate(-2px,1px)} 35%{transform:translate(2px,-1px)} 55%{transform:translate(1px,2px)} 75%{transform:translate(-1px,0)} 90%{transform:translate(0,-1px)} }
+  #nvFab .nv-online { position: absolute; right: 2px; bottom: 2px; z-index: 3; width: 10px; height: 10px; border-radius: 50%; background: #a78bfa; border: 2px solid #0a0a0b; box-shadow: 0 0 6px rgba(167,139,250,0.8); }
   #nvPanel {
     position: absolute; top: 72px; right: 16px; z-index: 30;
     width: min(340px, calc(100vw - 28px)); max-height: 66vh; display: none; flex-direction: column;
@@ -3583,7 +3585,7 @@ img, video, canvas, svg { max-width: 100%; }
   .nv-dots i:nth-child(2){animation-delay:.15s} .nv-dots i:nth-child(3){animation-delay:.3s}
   @keyframes nvb { 0%,100%{opacity:.3;transform:translateY(0)} 50%{opacity:1;transform:translateY(-3px)} }
 </style>
-<button id="nvFab" type="button" aria-label="Open Nova coach"><span class="nv-online"></span></button>
+<button id="nvFab" type="button" aria-label="Open Nova coach"><span class="nv-online"></span><span class="nv-eye nv-eye-l"></span><span class="nv-eye nv-eye-r"></span></button>
 <div id="nvPanel" role="dialog" aria-label="Nova gym coach">
   <div class="nv-head">
     <div class="nv-av"></div>
